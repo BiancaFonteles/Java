@@ -1,0 +1,19 @@
+package Tratamento_Excecao;
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Questao3 {
+public static void main(String args[]){
+    int senha=0;
+    Scanner scan = new Scanner(System.in);
+    try{
+    System.out.println("Digite sua senha:");
+    senha = scan.nextInt();
+    } catch(InputMismatchException e){
+        System.out.println(e.getMessage());
+        System.out.println("Entrada invalida, somente entrada númerica permitida");
+    }finally{
+        System.out.println("Programa concluído");
+    }
+  }    
+}
