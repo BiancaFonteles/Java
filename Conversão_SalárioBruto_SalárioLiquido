@@ -1,0 +1,23 @@
+package javaapplication1;
+import java.util.Scanner;
+public class SalarioLiquido {
+     public static void main(String[] args) {
+         int hr;
+         float hrv, s, imp,inss,sind, sl;
+         Scanner input = new Scanner(System.in);
+         System.out.print("Digite as horas trabalhadas no mês: ");
+         hr = input.nextInt();
+         System.out.print("\nDigite o valor da hora: ");
+         hrv = input.nextFloat();
+         s = hrv*hr;
+         System.out.println("\n+ Salário bruto: "+s);
+         imp = s*0.11f;
+         System.out.println("Salario - IR: "+imp);
+         inss = s*0.08f;
+         System.out.println("Salario - inss: "+inss);
+         sind = s*0.05f;
+         System.out.println("Salario - sindicato: "+sind);
+         sl = s-(s*0.24f);
+         System.out.println("Salario liquido: "+sl);
+     }      
+}
