@@ -1,0 +1,18 @@
+package javaapplication1;
+import java.util.Scanner;
+public class Prestacao {
+public static void main(String[] args){
+Scanner scan = new Scanner (System.in);
+float salario, prestacao;
+System.out.print("digite o seu salario: ");
+salario = scan.nextFloat();
+System.out.print("digite o valor da prestacao: ");
+prestacao = scan.nextFloat();
+double aux = 0.2*salario;
+if(prestacao>aux){
+System.out.println("Empréstimo não concedido! Prestação maior que 20% do salário");
+}else{
+System.out.println("Empréstimo concedido! Prestação menor que 20% do salário");
+  }
+ }       
+}
