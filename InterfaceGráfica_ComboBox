@@ -1,0 +1,117 @@
+package InterfaceGrafica;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+
+public class ExemploJComboBox extends JFrame {
+    JLabel lName, lAge, lCountry;
+    JTextField tName, tAge;
+    JButton okButton;
+    JComboBox bCountries;
+    String countries[] = {"Selecione um país","Brasil", "Mexico", "Chile", "Portugal"};
+    public ExemploJComboBox() {
+        super("ComboBox Example");
+        Container cont = getContentPane();
+        
+        lName = new JLabel("Nome:");
+        lAge = new JLabel("Idade:");
+        lCountry = new JLabel("País:");
+        tName = new JTextField();
+        tAge = new JTextField();
+        bCountries = new JComboBox(countries);
+        okButton = new JButton("OK");
+        
+        setLayout(null);
+        
+        cont.add(bCountries);
+        cont.add(lName);
+        cont.add(lAge);
+        cont.add(lCountry);
+        cont.add(tName);
+        cont.add(tAge);
+        cont.add(okButton);
+                
+        lName.setBounds(20, 30, 50, 30);
+        tName.setBounds(85, 30, 200, 30);
+        lAge.setBounds(20, 70, 50, 30);
+        tAge.setBounds(85, 70, 200, 30);
+        lCountry.setBounds(20, 110, 80, 30);
+        bCountries.setBounds(85, 110, 180, 30);
+        okButton.setBounds(130, 160, 80, 30);
+        
+        OkEvent event = new OkEvent();
+        okButton.addActionListener(event);
+        
+        setSize(400, 400);
+        setVisible(true);
+        
+    }
+    
+    public class OkEvent implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFrame frame = new JFrame("Result");
+            JLabel lNameResult = new JLabel();
+            JLabel lAgeResult = new JLabel();
+            JLabel lCountryResult = new JLabel();
+            JLabel resultado_erro = new JLabel("");
+            JLabel resultado_erro2 = new JLabel("");
+            JLabel resultado_erro3 = new JLabel("");
+            
+            frame.add(lNameResult);
+            frame.add(lAgeResult);
+            frame.add(lCountryResult);
+            frame.add(resultado_erro);
+            frame.add(resultado_erro2);
+            frame.add(resultado_erro3);
+            frame.setLayout(null);
+            
+            lNameResult.setBounds(20, 20, 500, 30);
+            lAgeResult.setBounds(20, 50, 200, 30);
+            lCountryResult.setBounds(20, 80, 200, 30);
+            resultado_erro.setBounds(20, 90, 400, 30);
+            
+            
+            String name = tName.getText();
+            String age = tAge.getText();
+            String country = bCountries.getSelectedItem().toString();
+           
+            if(name.equals("")){
+            resultado_erro.setBounds(20, 20, 400, 30);
+            resultado_erro.setText("Nome não informado! Tente de novo!");
+            }else{
+            lNameResult.setText("O nome informado foi: "+name);
+          }
+            if(age.equals("")){
+            resultado_erro2.setBounds(20, 50, 400, 30);
+            resultado_erro2.setText("Idade não informada! Tente de novo!");    
+            }else{
+            lAgeResult.setText("A idade informada foi: "+age);
+          }
+            if(country.equals("Selecione um país")){
+            resultado_erro3.setBounds(20, 80, 400, 30);
+            resultado_erro3.setText("País não informado! Tente de novo!"); 
+            } else{
+            lCountryResult.setText("O país informado foi: "+country);
+          }
+
+            tName.setText("");
+            tName.requestFocus();
+            tAge.setText("");
+            
+            frame.setSize(400,400);
+            frame.setVisible(true);
+        }
+        
+    }
+            
+            
+    public static void main(String[] args) {
+        ExemploJComboBox combobox = new ExemploJComboBox();
+        combobox.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}
